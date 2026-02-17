@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Home from '../pages/Home';
 
 // Lazy import pages (can be added later)
 // For now using placeholder pages
-const Home = () => <div>Home Page</div>;
 const Login = () => <div>Login Page</div>;
 const Register = () => <div>Register Page</div>;
 const Profile = () => <div>Profile Page</div>;
