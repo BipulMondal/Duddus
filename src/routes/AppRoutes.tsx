@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
+import Notification from '../pages/Notification';
 
 // Lazy import pages (can be added later)
 // For now using placeholder pages
@@ -27,6 +28,7 @@ const AppRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/restaurants" element={<Restaurants />} />
       <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+      <Route path="/notification" element={<Notification />} />
 
       {/* Protected Routes */}
       {isAuthenticated ? (

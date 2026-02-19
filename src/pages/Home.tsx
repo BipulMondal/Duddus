@@ -1,3 +1,4 @@
+import LiveStatus from "../components/LiveStatus";
 import TopCard from "../components/TopCard";
 import PopularBrands from "./PopularBrands";
 import PopularCuisines from "./PopularCuisines";
@@ -10,6 +11,7 @@ const Home = () => {
       <PopularCuisines />
       <PopularBrands />
       <PopularRestaurant />
+      <LiveStatus />
     </div>
   );
 };

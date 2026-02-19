@@ -1,5 +1,3 @@
-import React from "react";
-
 import burger from "../assets/images/brands/burger.png";
 import pizza from "../assets/images/brands/pizza.png";
 import noodles from "../assets/images/brands/noodels.png";
@@ -27,9 +25,9 @@ const PopularBrands = () => {
           Popular brands
         </p>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex items-center gap-[8.7rem] overflow-x-auto no-scrollbar pl-[32px]">
         {brands.map((item, index) => (
-          <Brands key={index} name={item.name} image={item.image} icon={item.icon} by={item.by} />
+          <Brands key={index} index={index} name={item.name} image={item.image} icon={item.icon} by={item.by} />
         ))}
       </div>
 

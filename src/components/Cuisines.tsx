@@ -1,6 +1,12 @@
 import React from "react";
 
-const Cuisines = ({ index, name, image }) => {
+interface CuisinesProps {
+  index: number;
+  name: string;
+  image: string;
+}
+
+const Cuisines = ({ index, name, image }: CuisinesProps) => {
   return (
     <div className="flex flex-col items-center w-[88.5px]" key={index}>
       <img

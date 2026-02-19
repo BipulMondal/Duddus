@@ -4,7 +4,7 @@
  * @param {string} currency - Currency code (default: INR)
  * @returns {string} Formatted price
  */
-export const formatPrice = (price, currency = 'INR') => {
+export const formatPrice = (price: number, currency: string = 'INR'): string => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: currency,
@@ -16,7 +16,7 @@ export const formatPrice = (price, currency = 'INR') => {
  * @param {string|Date} date - Date to format
  * @returns {string} Formatted date
  */
-export const formatDate = (date) => {
+export const formatDate = (date: string | Date): string => {
   return new Date(date).toLocaleDateString('en-IN', {
     year: 'numeric',
     month: 'long',
@@ -31,7 +31,7 @@ export const formatDate = (date) => {
  * @param {string} email - Email to validate
  * @returns {boolean} True if valid email
  */
-export const isValidEmail = (email) => {
+export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
@@ -41,7 +41,7 @@ export const isValidEmail = (email) => {
  * @param {string} phone - Phone number to validate
  * @returns {boolean} True if valid phone
  */
-export const isValidPhone = (phone) => {
+export const isValidPhone = (phone: string): boolean => {
   const phoneRegex = /^[0-9]{10}$/;
   return phoneRegex.test(phone.replace(/\D/g, ''));
 };
@@ -52,9 +52,9 @@ export const isValidPhone = (phone) => {
  * @param {number} delay - Delay in milliseconds
  * @returns {Function} Debounced function
  */
-export const debounce = (func, delay) => {
-  let timeoutId;
-  return (...args) => {
+export const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => {
+  let timeoutId: NodeJS.Timeout;
+  return (...args: Parameters<T>) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func(...args), delay);
   };
@@ -66,9 +66,9 @@ export const debounce = (func, delay) => {
  * @param {number} limit - Time limit in milliseconds
  * @returns {Function} Throttled function
  */
-export const throttle = (func, limit) => {
-  let inThrottle;
-  return (...args) => {
+export const throttle = <T extends (...args: any[]) => any>(func: T, limit: number) => {
+  let inThrottle: boolean;
+  return (...args: Parameters<T>) => {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
@@ -85,7 +85,7 @@ export const throttle = (func, limit) => {
  * @param {number} lon2 - Longitude 2
  * @returns {number} Distance in km
  */
-export const calculateDistance = (lat1, lon1, lat2, lon2) => {
+export const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
   const R = 6371; // Earth's radius in km
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
   const dLon = ((lon2 - lon1) * Math.PI) / 180;
@@ -104,7 +104,7 @@ export const calculateDistance = (lat1, lon1, lat2, lon2) => {
  * @param {string} key - Storage key
  * @returns {any} Stored value or null
  */
-export const getFromLocalStorage = (key) => {
+export const getFromLocalStorage = (key: string): any => {
   try {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
@@ -119,7 +119,7 @@ export const getFromLocalStorage = (key) => {
  * @param {string} key - Storage key
  * @param {any} value - Value to store
  */
-export const setToLocalStorage = (key, value) => {
+export const setToLocalStorage = (key: string, value: any): void => {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -131,7 +131,7 @@ export const setToLocalStorage = (key, value) => {
  * Remove item from local storage
  * @param {string} key - Storage key
  */
-export const removeFromLocalStorage = (key) => {
+export const removeFromLocalStorage = (key: string): void => {
   try {
     window.localStorage.removeItem(key);
   } catch (error) {

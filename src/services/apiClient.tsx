@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 // Create an axios instance with default configuration
 const apiClient = axios.create({
@@ -11,7 +11,7 @@ const apiClient = axios.create({
 
 // Request interceptor
 apiClient.interceptors.request.use(
-  (config) => {
+  (config: InternalAxiosRequestConfig) => {
     // Add auth token if available
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -19,7 +19,7 @@ apiClient.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
+  (error: AxiosError) => {
     return Promise.reject(error);
   }
 );
@@ -30,7 +30,7 @@ apiClient.interceptors.response.use(
     // Return response data directly
     return response.data;
   },
-  (error) => {
+  (error: AxiosError<any>) => {
     // Handle errors globally
     if (error.response) {
       // Server responded with error status

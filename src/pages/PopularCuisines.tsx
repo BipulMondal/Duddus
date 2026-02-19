@@ -33,13 +33,13 @@ const PopularCuisines = () => {
       </div>
       <div className="flex justify-between items-center">
         {cuisines.map((item, index) => (
-          <Cuisines key={index} name={item.name} image={item.image} />
+          <Cuisines key={index} index={index} name={item.name} image={item.image} />
         ))}
       </div>
 
       <div className="flex justify-between items-center">
         {cuisines.map((item, index) => (
-          <Cuisines key={index} name={item.name} image={item.image} />
+          <Cuisines key={index} index={index} name={item.name} image={item.image} />
         ))}
       </div>
     </div>

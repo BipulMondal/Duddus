@@ -1,11 +1,75 @@
 import apiClient from './apiClient';
 
+// Type definitions
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+interface UserData {
+  name?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+}
+
+interface RestaurantParams {
+  page?: number;
+  limit?: number;
+  category?: string;
+  sortBy?: string;
+}
+
+interface OrderData {
+  restaurantId: string;
+  items: Array<{
+    foodItemId: string;
+    quantity: number;
+  }>;
+  deliveryAddress: string;
+  paymentMethod: string;
+}
+
+interface OrderParams {
+  page?: number;
+  limit?: number;
+  status?: string;
+}
+
+interface CartData {
+  foodItemId: string;
+  quantity: number;
+  restaurantId: string;
+}
+
+interface PaymentData {
+  orderId: string;
+  amount: number;
+  method: string;
+}
+
+interface PaymentMethod {
+  type: string;
+  details: any;
+}
+
+interface DeliveryData {
+  restaurantId: string;
+  deliveryAddress: string;
+}
+
+interface ReviewData {
+  restaurantId: string;
+  rating: number;
+  comment: string;
+}
+
 // User/Auth API calls
 export const authService = {
-  login: (email, password) =>
+  login: (email: string, password: string) =>
     apiClient.post('/auth/login', { email, password }),
 
-  register: (userData) =>
+  register: (userData: UserData) =>
     apiClient.post('/auth/register', userData),
 
   logout: () =>
@@ -14,141 +78,142 @@ export const authService = {
   getCurrentUser: () =>
     apiClient.get('/auth/me'),
 
-  updateProfile: (userData) =>
+  updateProfile: (userData: UserData) =>
     apiClient.put('/users/profile', userData),
 };
 
 // Restaurant API calls
 export const restaurantService = {
-  getAllRestaurants: (params) =>
+  getAllRestaurants: (params?: RestaurantParams) =>
     apiClient.get('/restaurants', { params }),
 
-  getRestaurantById: (id) =>
+  getRestaurantById: (id: string) =>
     apiClient.get(`/restaurants/${id}`),
 
-  searchRestaurants: (query) =>
+  searchRestaurants: (query: string) =>
     apiClient.get('/restaurants/search', { params: { q: query } }),
 
-  getRestaurantsByCategory: (category) =>
+  getRestaurantsByCategory: (category: string) =>
     apiClient.get(`/restaurants/category/${category}`),
 
-  getRatings: (restaurantId) =>
+  getRatings: (restaurantId: string) =>
     apiClient.get(`/restaurants/${restaurantId}/ratings`),
 };
 
 // Menu/Food Items API calls
 export const foodService = {
-  getMenuItems: (restaurantId) =>
+  getMenuItems: (restaurantId: string) =>
     apiClient.get(`/restaurants/${restaurantId}/menu`),
 
-  getFoodItemById: (id) =>
+  getFoodItemById: (id: string) =>
     apiClient.get(`/food/${id}`),
 
-  searchFood: (query) =>
+  searchFood: (query: string) =>
     apiClient.get('/food/search', { params: { q: query } }),
 
-  getFoodByCategory: (restaurantId, category) =>
+  getFoodByCategory: (restaurantId: string, category: string) =>
     apiClient.get(`/restaurants/${restaurantId}/menu/${category}`),
 };
 
 // Order API calls
 export const orderService = {
-  createOrder: (orderData) =>
+  createOrder: (orderData: OrderData) =>
     apiClient.post('/orders', orderData),
 
-  getOrders: (params) =>
+  getOrders: (params?: OrderParams) =>
     apiClient.get('/orders', { params }),
 
-  getOrderById: (id) =>
+  getOrderById: (id: string) =>
     apiClient.get(`/orders/${id}`),
 
-  updateOrder: (id, updateData) =>
+  updateOrder: (id: string, updateData: any) =>
     apiClient.put(`/orders/${id}`, updateData),
 
-  cancelOrder: (id, reason) =>
+  cancelOrder: (id: string, reason: string) =>
     apiClient.post(`/orders/${id}/cancel`, { reason }),
 
   getOrderHistory: () =>
     apiClient.get('/orders/history'),
 
-  trackOrder: (id) =>
+  trackOrder: (id: string) =>
     apiClient.get(`/orders/${id}/track`),
 };
 
 // Cart API calls
 export const cartService = {
-  addToCart: (cartData) =>
+  addToCart: (cartData: CartData) =>
     apiClient.post('/cart', cartData),
 
   getCart: () =>
     apiClient.get('/cart'),
 
-  updateCartItem: (itemId, quantity) =>
+  updateCartItem: (itemId: string, quantity: number) =>
     apiClient.put(`/cart/${itemId}`, { quantity }),
 
-  removeFromCart: (itemId) =>
+  removeFromCart: (itemId: string) =>
     apiClient.delete(`/cart/${itemId}`),
 
   clearCart: () =>
     apiClient.delete('/cart'),
 
-  applyPromo: (promoCode) =>
+  applyPromo: (promoCode: string) =>
     apiClient.post('/cart/promo', { code: promoCode }),
 };
 
 // Payment API calls
 export const paymentService = {
-  initiatePayment: (paymentData) =>
+  initiatePayment: (paymentData: PaymentData) =>
     apiClient.post('/payments/initiate', paymentData),
 
-  verifyPayment: (paymentId, transactionId) =>
+  verifyPayment: (paymentId: string, transactionId: string) =>
     apiClient.post(`/payments/${paymentId}/verify`, { transactionId }),
 
   getPaymentMethods: () =>
     apiClient.get('/payments/methods'),
 
-  savePaymentMethod: (methodData) =>
+  savePaymentMethod: (methodData: PaymentMethod) =>
     apiClient.post('/payments/methods', methodData),
 
-  deletePaymentMethod: (methodId) =>
+  deletePaymentMethod: (methodId: string) =>
     apiClient.delete(`/payments/methods/${methodId}`),
 };
 
 // Delivery API calls
 export const deliveryService = {
-  getDeliveryEstimate: (deliveryData) =>
+  getDeliveryEstimate: (deliveryData: DeliveryData) =>
     apiClient.post('/delivery/estimate', deliveryData),
 
-  getDeliveryStatus: (orderId) =>
+  getDeliveryStatus: (orderId: string) =>
     apiClient.get(`/delivery/${orderId}/status`),
 
-  updateDeliveryAddress: (orderId, address) =>
+  updateDeliveryAddress: (orderId: string, address: string) =>
     apiClient.put(`/delivery/${orderId}/address`, { address }),
 };
 
 // Review API calls
 export const reviewService = {
-  addReview: (reviewData) =>
+  addReview: (reviewData: ReviewData) =>
     apiClient.post('/reviews', reviewData),
 
-  getReviews: (restaurantId) =>
+  getReviews: (restaurantId: string) =>
     apiClient.get(`/restaurants/${restaurantId}/reviews`),
 
-  deleteReview: (reviewId) =>
+  deleteReview: (reviewId: string) =>
     apiClient.delete(`/reviews/${reviewId}`),
 };
 
 // Favorites API calls
 export const favoriteService = {
-  addFavorite: (restaurantId) =>
+  addFavorite: (restaurantId: string) =>
     apiClient.post(`/favorites/${restaurantId}`),
 
-  removeFavorite: (restaurantId) =>
+  removeFavorite: (restaurantId: string) =>
     apiClient.delete(`/favorites/${restaurantId}`),
 
   getFavorites: () =>
     apiClient.get('/favorites'),
 
-  isFavorite: (restaurantId) =>
+  isFavorite: (restaurantId: string) =>
     apiClient.get(`/favorites/${restaurantId}/check`),
 };
+
