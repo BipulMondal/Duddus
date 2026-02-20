@@ -6,7 +6,7 @@ import PopularRestaurant from "./PopularRestaurant";
 
 const Home = () => {
   return (
-    <div className="max-w-[1400px] mx-auto">
+    <div className="max-w-[1400px] mx-auto p-5">
       <TopCard />
       <PopularCuisines />
       <PopularBrands />

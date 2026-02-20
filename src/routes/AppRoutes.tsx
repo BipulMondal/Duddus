@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Notification from '../pages/Notification';
+import SearchResult from '../pages/SearchResult';
+import Help_Support from '../pages/Help_Support';
 
 // Lazy import pages (can be added later)
 // For now using placeholder pages
@@ -29,6 +31,8 @@ const AppRoutes = () => {
       <Route path="/restaurants" element={<Restaurants />} />
       <Route path="/restaurants/:id" element={<RestaurantDetail />} />
       <Route path="/notification" element={<Notification />} />
+      <Route path="/result" element={<SearchResult />} />
+      <Route path="/help-and-support" element={<Help_Support />} />
 
       {/* Protected Routes */}
       {isAuthenticated ? (

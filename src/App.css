@@ -4,7 +4,7 @@
 
 @layer components {
   .main-content {
-    @apply mt-[92px] min-h-[calc(100vh-92px)] p-5 bg-gray-100;
+    @apply mt-[92px] min-h-[calc(100vh-92px)] bg-gray-100;
   }
 
   .App-header {

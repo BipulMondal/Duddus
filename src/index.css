@@ -27,3 +27,12 @@
       source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

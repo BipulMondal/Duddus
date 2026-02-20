@@ -8,7 +8,7 @@ interface BrandsProps {
 
 const Brands = ({ index, name, image, icon, by }: BrandsProps) => {
   return (
-    <div className="flex flex-col items-center w-[88.5px]" key={index}>
+    <div className="flex flex-col items-center w-[150px]" key={index}>
       <div className="relative h-[150px] w-[150px] flex flex-col items-center rounded-[15px] border-[1.25px] border-[#E9E9E9] bg-white pt-2 overflow-hidden">
         <img
           src={icon}

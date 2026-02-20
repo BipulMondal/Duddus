@@ -10,12 +10,27 @@ import arrow from "../assets/images/location-modal/arrow-right.png";
 import check from "../assets/images/location-modal/check.png";
 import cancel from "../assets/images/navbar/cancel.png";
 import search from "../assets/images/navbar/search.png";
+import user from "../assets/images/navbar/user.png";
+import bell from "../assets/images/navbar/bell.png";
+import cart from "../assets/images/navbar/cart.png";
+import profile from "../assets/images/navbar/profile.png";
+import edit from "../assets/images/navbar/edit.png";
+import address from "../assets/images/navbar/home.png";
+import help from "../assets/images/navbar/help.png";
+import star from "../assets/images/navbar/star.png";
+import policy from "../assets/images/navbar/policy.png";
+import terms from "../assets/images/navbar/terms.png";
+import faq from "../assets/images/navbar/faq.png";
+import info from "../assets/images/navbar/information.png";
+import darkmode from "../assets/images/navbar/moon.png";
+import signout from "../assets/images/navbar/logout.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isLocationOpen, setIsLocationOpen] = useState<boolean>(false);
+  const [isUserModalOpen, setIsUserModalOpen] = useState<boolean>(false);
 
   const searchedItem = [
     "Dosa",
@@ -72,7 +87,7 @@ const Navbar = () => {
                 </svg>
               </div>
 
-              <span className="overflow-hidden text-gray-600 text-sm font-normal leading-[160%] truncate">
+              <span className="w-[160px] overflow-hidden text-gray-600 text-sm font-normal leading-[160%] truncate">
                 Block C, Sector 62, Noida, Uttar Pradesh
               </span>
             </div>
@@ -109,96 +124,23 @@ const Navbar = () => {
         <div
           className={`flex items-center gap-[17px] ${isMenuOpen ? "flex" : "hidden"} md:flex md:order-3`}
         >
-          <div className="flex w-12 h-12 p-2.5 justify-center items-center gap-2.5 rounded-full border border-gray-400/25 bg-white/25 cursor-pointer hover:bg-white/30">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M5.15837 11.491C5.08489 12.887 5.16936 14.373 3.92213 15.3084C3.34164 15.7438 3 16.427 3 17.1527C3 18.1508 3.7818 19 4.8 19H19.2C20.2182 19 21 18.1508 21 17.1527C21 16.427 20.6584 15.7438 20.0779 15.3084C18.8306 14.373 18.9151 12.887 18.8416 11.491C18.6501 7.85223 15.6438 5 12 5C8.35617 5 5.34988 7.85222 5.15837 11.491Z"
-                stroke="#706B66"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M10.5 3.125C10.5 3.95343 11.1716 5 12 5C12.8284 5 13.5 3.95343 13.5 3.125C13.5 2.29657 12.8284 2 12 2C11.1716 2 10.5 2.29657 10.5 3.125Z"
-                stroke="#706B66"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M15 19C15 20.6569 13.6569 22 12 22C10.3431 22 9 20.6569 9 19"
-                stroke="#706B66"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="flex w-12 h-12 p-2.5 justify-center items-center gap-2.5 rounded-full border border-gray-400/25 bg-white/25 cursor-pointer hover:bg-white/30">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M10.5 20.25C10.5 20.6642 10.1642 21 9.75 21C9.33579 21 9 20.6642 9 20.25C9 19.8358 9.33579 19.5 9.75 19.5C10.1642 19.5 10.5 19.8358 10.5 20.25Z"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M19 20.25C19 20.6642 18.6642 21 18.25 21C17.8358 21 17.5 20.6642 17.5 20.25C17.5 19.8358 17.8358 19.5 18.25 19.5C18.6642 19.5 19 19.8358 19 20.25Z"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M2 3H2.20664C3.53124 3 4.19354 3 4.6255 3.40221C5.05746 3.80441 5.10464 4.46503 5.19902 5.78626L5.45035 9.30496C5.5924 11.2936 5.66342 12.2879 5.96476 13.0961C6.62531 14.8677 8.08229 16.2244 9.89648 16.757C10.7241 17 11.7267 17 13.7317 17C15.8373 17 16.89 17 17.7417 16.7416C19.6593 16.1599 21.1599 14.6593 21.7416 12.7417C21.9426 12.0793 21.9872 11.299 21.9972 10M12.5 6H5.5"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M16 6H22M19 9V3"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="flex w-12 h-12 p-2.5 justify-center items-center gap-2.5 rounded-full border border-gray-400/25 bg-white/25 cursor-pointer hover:bg-white/30">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-              />
-              <path
-                d="M7.5 17C9.8317 14.5578 14.1432 14.4428 16.5 17M14.4951 9.5C14.4951 10.8807 13.3742 12 11.9915 12C10.6089 12 9.48797 10.8807 9.48797 9.5C9.48797 8.11929 10.6089 7 11.9915 7C13.3742 7 14.4951 8.11929 14.4951 9.5Z"
-                stroke="#6A6A6A"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
+          <img
+            src={bell}
+            alt="Notifications"
+            className="h-[48px] w-[48px] cursor-pointer"
+            onClick={() => navigate("/notification")}
+          />
+          <img
+            src={cart}
+            alt="Cart"
+            className="h-[48px] w-[48px] cursor-pointer"
+          />
+          <img
+            src={user}
+            alt="User"
+            className="h-[48px] w-[48px] cursor-pointer"
+            onClick={() => setIsUserModalOpen(true)}
+          />
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -339,6 +281,266 @@ const Navbar = () => {
                 <p>{item}</p>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* User Modal - Slide from Right */}
+      {isUserModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300"
+          onClick={() => setIsUserModalOpen(false)}
+        >
+          <div
+            className="fixed right-0 top-0 h-full w-full max-w-[450px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out rounded-l-[20px] p-6 shadow-[-23px_0_72px_0_rgba(0,0,0,0.15)] gap-6 overflow-y-auto"
+            style={{ animation: "slideInRight 0.3s ease-out" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center">
+              <img
+                src={cancel}
+                alt="close"
+                className="flex w-[36px] h-[36px] p-[7.5px] justify-center items-center gap-[7.5px] shrink-0 rounded-full border-[0.75px] border-[rgba(112,107,102,0.25)] bg-[rgba(255,255,255,0.25)] cursor-pointer"
+                onClick={() => setIsUserModalOpen(false)}
+              />
+            </div>
+
+            {/* Modal Content */}
+            <div className="space-y-6 mt-[24px]">
+              {/* User Info */}
+              <div className="rounded-[16px] border">
+                <div className="flex justify-between items-center gap-4 p-[16px]">
+                  <div className="rounded-full flex items-center justify-center gap-[12px] ">
+                    <img
+                      src={profile}
+                      alt="User"
+                      className="h-[72px] w-[72px]"
+                    />
+                    <div>
+                      <h6 className="text-[#050505] font-urbanist text-[22px] font-semibold leading-[140%]">
+                        Aman Bansal
+                      </h6>
+                      <p className="text-[#6A6A6A] font-urbanist text-[14px] font-medium leading-[20px]">
+                        +91 9876543210
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center py-[7.5px] px-[9px] gap-[6px] rounded-[7.5px] border-[0.75px] border-[#E9E9E9] bg-[#F5F5F5] cursor-pointer">
+                    <img
+                      src={edit}
+                      alt="Edit"
+                      className="h-[12px] w-[12px] cursor-pointer"
+                    />
+                    <p className="text-[#050505] text-center font-urbanist text-[12px] font-medium leading-[15px]">
+                      Edit
+                    </p>
+                  </div>
+                </div>
+                <div className="flex  h-[60px] py-[12px] px-4 justify-between items-center gap-[10px] bg-[#7402A7] rounded-b-[16px]">
+                  <div>
+                    <p className="text-white font-urbanist text-[14px] font-medium leading-[140%]">
+                      Upgrade to Duddus+
+                    </p>
+                    <p className="text-white font-urbanist text-[10px] font-medium leading-[16px] mt-1">
+                      Get Exclusive Offers, Free food delivery and much more
+                    </p>
+                  </div>
+                  <div className="flex items-center py-[7.5px] px-[9px] gap-[6px] rounded-[7.5px] border-[0.75px] border-[#E9E9E9] bg-[#FFFEFD]">
+                    <button>Upgrade</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Menu Items */}
+              <div className="border rounded-[16px] p-4">
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={address}
+                      alt="Home"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Manage Address
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img src={help} alt="Help" className="h-[20px] w-[20px]" />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Help and Support
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={star}
+                      alt="Rate Us"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Rate Us
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={terms}
+                      alt="terms"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Terms and Conditions
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img src={faq} alt="FAQ" className="h-[20px] w-[20px]" />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      FAQs
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={info}
+                      alt="Terms and Conditions"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      About Us
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={policy}
+                      alt="Privacy Policy"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Privacy Policy
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={darkmode}
+                      alt="Dark Mode"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Dark Mode
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
+
+                <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
+                  <div className="flex items-center gap-[8px]">
+                    <img
+                      src={signout}
+                      alt="Sign Out"
+                      className="h-[20px] w-[20px]"
+                    />
+                    <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
+                      Sign Out
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      src={arrow}
+                      alt="arrow"
+                      className="h-[18px] w-[18px]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

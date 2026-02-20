@@ -15,7 +15,7 @@ const Notification = () => {
   ]
 
   return (
-    <div>
+    <div className='p-5'>
       {dates.map((item) => (
         <Notify key={item.day} day={item.day} count={item.count} />
       ))}

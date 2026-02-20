@@ -25,7 +25,7 @@ const PopularBrands = () => {
           Popular brands
         </p>
       </div>
-      <div className="flex items-center gap-[8.7rem] overflow-x-auto no-scrollbar pl-[32px]">
+      <div className="flex items-center justify-between overflow-x-auto no-scrollbar">
         {brands.map((item, index) => (
           <Brands key={index} index={index} name={item.name} image={item.image} icon={item.icon} by={item.by} />
         ))}
