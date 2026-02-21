@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import location from "../assets/images/location.png";
 import location2 from "../assets/images/location-modal/location.png";
@@ -412,7 +412,10 @@ const Navbar = () => {
                 <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
                   <div
                     className="flex items-center gap-[8px]"
-                    onClick={() => (navigate("/help-and-support"), setIsUserModalOpen(false))}
+                    onClick={() => {
+                      navigate("/help-and-support");
+                      setIsUserModalOpen(false);
+                    }}
                   >
                     <img src={help} alt="Help" className="h-[20px] w-[20px]" />
                     <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
