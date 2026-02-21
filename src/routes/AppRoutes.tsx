@@ -3,7 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Notification from '../pages/Notification';
 import SearchResult from '../pages/SearchResult';
-import Help_Support from '../pages/Help_Support';
+import AllOrder from '../pages/AllOrder';
+import HelpSupport from '../pages/HelpSupport';
 
 // Lazy import pages (can be added later)
 // For now using placeholder pages
@@ -32,7 +33,9 @@ const AppRoutes = () => {
       <Route path="/restaurants/:id" element={<RestaurantDetail />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/result" element={<SearchResult />} />
-      <Route path="/help-and-support" element={<Help_Support />} />
+      <Route path="/result" element={<SearchResult />} />
+      <Route path="/help-and-support" element={<HelpSupport />} />
+      <Route path="/orders" element={<AllOrder />} />
 
       {/* Protected Routes */}
       {isAuthenticated ? (

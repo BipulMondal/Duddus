@@ -38,7 +38,7 @@ const Help_Support = () => {
 
   return (
     <div className="flex border-2">
-      <div className="w-[40%] border-r p-6">
+      <div className="w-[35%] border-r p-6">
         <div>
           <p className="text-[#6A6A6A] font-urbanist text-[16px] font-medium leading-[20px]">
             Profile / Help and Support
@@ -137,29 +137,40 @@ const Help_Support = () => {
           </div>
         </div>
       </div>
-      <div className="w-[60%] border-l p-6">
+      <div className="w-[65%] border-l p-6">
         <div>
           {data.map((item) => (
-            <div key={item.id} className="border rounded-[16px] p-4 mb-4 bg-white">
-              <div className="flex justify-between items-center bg-white">
-                <p>
+            <div
+              key={item.id}
+              className="border rounded-[16px] p-4 mb-4 bg-white"
+            >
+              <div className="flex justify-between items-center bg-white border-b-2 border-dashed pb-[8px]">
+                <p className="text-[#050505] font-urbanist text-[12px] font-medium leading-[20px]">
                   {item.count} x {item.item}
                 </p>
-                <p>{item.restaurent}</p>
+                <p className="text-[#050505] font-urbanist text-[12px] font-medium leading-[20px]">
+                  {item.restaurent}
+                </p>
               </div>
-              <div className="flex justify-between items-center bg-white">
-                <div>
+              <div className="flex justify-between items-center bg-white border-b-2 py-[8px]">
+                <div className="text-[#6A6A6A] font-urbanist text-[10px] font-medium leading-[17px]">
                   <p>{item.orderDate}</p>
                   <p>{item.orderStatus}</p>
                 </div>
-                <p>₹ {item.price}</p>
+                <p className="text-[#050505] font-urbanist text-[12px] font-medium leading-[20px]">
+                  ₹ {item.price}
+                </p>
               </div>
-              <div className="flex justify-between items-center bg-white">
+              <div className="flex justify-between items-center bg-white pt-[8px]">
                 <div className="flex items-center gap-2">
-                  <span>All Details</span>
+                  <span className="text-[#050505] font-urbanist text-[12px] font-medium leading-[20px]">
+                    All Details
+                  </span>
                   <img src={arrow} alt="arrow" className="h-[18px] w-[18px]" />
                 </div>
-                <p>HELP</p>
+                <p className="text-[#7402A7] font-urbanist text-[12px] font-medium leading-[20px]">
+                  HELP
+                </p>
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import location from "../assets/images/location.png";
 import location2 from "../assets/images/location-modal/location.png";
@@ -24,6 +24,8 @@ import faq from "../assets/images/navbar/faq.png";
 import info from "../assets/images/navbar/information.png";
 import darkmode from "../assets/images/navbar/moon.png";
 import signout from "../assets/images/navbar/logout.png";
+import whitebell from "../assets/images/navbar/white-bell.png";
+import whitecart from "../assets/images/navbar/white-cart.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isLocationOpen, setIsLocationOpen] = useState<boolean>(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState<boolean>(false);
+  const [activeIcon, setActiveIcon] = useState<string | null>(null);
 
   const searchedItem = [
     "Dosa",
@@ -124,23 +127,53 @@ const Navbar = () => {
         <div
           className={`flex items-center gap-[17px] ${isMenuOpen ? "flex" : "hidden"} md:flex md:order-3`}
         >
-          <img
-            src={bell}
-            alt="Notifications"
-            className="h-[48px] w-[48px] cursor-pointer"
-            onClick={() => navigate("/notification")}
-          />
-          <img
-            src={cart}
-            alt="Cart"
-            className="h-[48px] w-[48px] cursor-pointer"
-          />
-          <img
-            src={user}
-            alt="User"
-            className="h-[48px] w-[48px] cursor-pointer"
-            onClick={() => setIsUserModalOpen(true)}
-          />
+          {/* Navigation Links */}
+          <div
+            className={`flex items-center gap-[17px] ${isMenuOpen ? "flex" : "hidden"} md:flex md:order-3`}
+          >
+            <div
+              className="h-[48px] w-[48px] rounded-full cursor-pointer flex items-center justify-center"
+              style={{
+                backgroundColor:
+                  activeIcon === "bell" ? "#7402A7" : "transparent",
+              }}
+              onClick={() => {
+                setActiveIcon("bell");
+                navigate("/notification");
+              }}
+            >
+              <img
+                src={activeIcon === "bell" ? whitebell : bell}
+                alt="Notifications"
+                className={`${activeIcon === "bell" ? "h-[22px] w-[22px]" : "h-[48px] w-[48px]"}`}
+              />
+            </div>
+            <div
+              className="h-[48px] w-[48px] rounded-full cursor-pointer flex items-center justify-center"
+              style={{
+                backgroundColor:
+                  activeIcon === "cart" ? "#7402A7" : "transparent",
+              }}
+              onClick={() => {
+                setActiveIcon("cart");
+                navigate("/orders");
+              }}
+            >
+              <img
+                src={activeIcon === "cart" ? whitecart : cart}
+                alt="Cart"
+                className={`${activeIcon === "cart" ? "h-[22px] w-[22px]" : "h-[48px] w-[48px]"}`}
+              />
+            </div>
+            <div
+              className="h-[48px] w-[48px] rounded-full cursor-pointer flex items-center justify-center"
+              onClick={() => {
+                setIsUserModalOpen(true);
+              }}
+            >
+              <img src={user} alt="User" className="h-[48px] w-[48px]" />
+            </div>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -377,7 +410,10 @@ const Navbar = () => {
                 <div className="h-[1px] w-full bg-gray-300 my-[20px]"></div>
 
                 <div className="flex justify-between items-center gap-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ">
-                  <div className="flex items-center gap-[8px]">
+                  <div
+                    className="flex items-center gap-[8px]"
+                    onClick={() => (navigate("/help-and-support"), setIsUserModalOpen(false))}
+                  >
                     <img src={help} alt="Help" className="h-[20px] w-[20px]" />
                     <span className="text-[#040404] font-urbanist text-[16px] font-medium leading-[20px]">
                       Help and Support
